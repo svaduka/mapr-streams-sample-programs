@@ -13,7 +13,7 @@ with the original Kafka program. The differences are:
 
 
 ## Pre-requisites
-To start, you need to get a MapR 5.2 running. You can install your own cluster or download a sandbox.
+To start, you need to get a MapR 5.1 running. You can install your own cluster or download a sandbox.
 
 ### Step 1: Create the stream
 

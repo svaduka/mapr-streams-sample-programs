@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Run {
     public static void main(String[] args) throws IOException {
         if (args.length < 1) {
-            throw new IllegalArgumentException("Must have either 'producer' or 'consumer' as argument");
+            throw new IllegalArgumentException("Must have either 'producer', 'consumer' or 'dbconsumer' as argument");
         }
         switch (args[0]) {
             case "producer":
@@ -17,6 +17,9 @@ public class Run {
                 break;
             case "consumer":
                 Consumer.main(args);
+                break;
+            case "dbconsumer":
+                DBConsumer.main(args);
                 break;
             default:
                 throw new IllegalArgumentException("Don't know how to do " + args[0]);

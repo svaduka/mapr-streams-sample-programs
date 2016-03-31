@@ -24,6 +24,12 @@
             <version>0.9.0.0-mapr-1602</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Adding MapR DB Dependency for the DBConsumer application    -->
+        <dependency>
+            <groupId>com.mapr.db</groupId>
+            <artifactId>maprdb</artifactId>
+            <version>5.1.0-mapr</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

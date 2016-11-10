@@ -25,10 +25,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.mapr.streams</groupId>
+            <artifactId>mapr-streams</artifactId>
+            <version>${mapr-db-version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${mapr-streams-version}</version>
-            <scope>provided</scope>
         </dependency>
         <!-- Adding MapR DB Dependency for the DBConsumer application    -->
         <dependency>

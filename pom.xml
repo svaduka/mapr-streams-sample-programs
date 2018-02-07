@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <mapr-db-version>5.2.0-mapr</mapr-db-version>
-        <mapr-streams-version>0.9.0.0-mapr-1607</mapr-streams-version>
+        <mapr-version>6.0.0-mapr</mapr-version>
+        <mapr-streams-version>0.9.0.0-mapr-1801-streams-6.0.0</mapr-streams-version>
     </properties>
 
 
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.mapr.streams</groupId>
             <artifactId>mapr-streams</artifactId>
-            <version>${mapr-db-version}</version>
+            <version>${mapr-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.mapr.db</groupId>
             <artifactId>maprdb</artifactId>
-            <version>${mapr-db-version}</version>
+            <version>${mapr-version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -63,8 +63,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>

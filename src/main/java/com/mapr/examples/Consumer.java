@@ -4,14 +4,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
 import org.HdrHistogram.Histogram;
+import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.common.TopicPartition;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Properties;
 import java.util.Random;
 
@@ -43,6 +46,26 @@ public class Consumer {
             consumer = new KafkaConsumer<>(properties);
         }
         consumer.subscribe(Arrays.asList(TOPIC_FAST_MESSAGES, TOPIC_SUMMARY_MARKERS));
+        consumer.subscribe(Arrays.asList(TOPIC_FAST_MESSAGES, TOPIC_SUMMARY_MARKERS), new ConsumerRebalanceListener() {
+			
+			@Override
+			public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
+				System.out.println("onPartitionsRevoked");
+				for (TopicPartition partition : partitions) {
+					consumer.seek(partition, 0);
+				}
+				
+			}
+			
+			@Override
+			public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
+				System.out.println("onPartitionsAssigned");
+				for (TopicPartition partition : partitions) {
+					consumer.seek(partition, 0);
+				}
+				
+			}
+		});
         int timeouts = 0;
         //noinspection InfiniteLoopStatement
         while (true) {
